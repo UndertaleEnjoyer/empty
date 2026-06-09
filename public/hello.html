@@ -1,0 +1,1564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Prank Operations | The Art of Harmless Fun & Creative Laughter</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #1a472a;
+            --primary-light: #2d5f3f;
+            --accent: #e74c3c;
+            --accent-light: #ef5350;
+            --accent-dark: #c0392b;
+            --success: #27ae60;
+            --bg-light: #f8fafb;
+            --bg-lighter: #fafbfc;
+            --border: #e5e7eb;
+            --text-dark: #1f2937;
+            --text-mid: #4b5563;
+            --text-light: #6b7280;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #ebebf0 100%);
+            color: var(--text-dark);
+            line-height: 1.6;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        .navbar {
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(16px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .navbar:hover {
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        .navbar-container {
+            max-width: 1320px;
+            margin: 0 auto;
+            padding: 1.35rem 2.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 2.5rem;
+        }
+
+        .logo {
+            font-size: 1.95rem;
+            font-weight: 950;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-decoration: none;
+            letter-spacing: -1px;
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+            gap: 0.85rem;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 4rem;
+            list-style: none;
+            flex: 1;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-light);
+            font-weight: 650;
+            font-size: 0.95rem;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            position: relative;
+            padding: 0.6rem 0;
+            letter-spacing: 0.2px;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent) 0%, var(--accent-light) 100%);
+            transition: width 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            border-radius: 2px;
+        }
+
+        .nav-links a:hover,
+        .nav-links a:focus {
+            color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a:focus::after {
+            width: 100%;
+        }
+
+        .nav-links a:focus {
+            outline: 2px solid var(--accent);
+            outline-offset: 6px;
+            border-radius: 4px;
+        }
+
+        /* Hero Section */
+        .hero {
+            max-width: 1320px;
+            margin: 0 auto;
+            padding: 6.5rem 2.5rem 5rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(231, 76, 60, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 0;
+            animation: pulse 8s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.8; }
+            50% { transform: scale(1.1); opacity: 0.6; }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-content h1 {
+            font-size: 4.5rem;
+            font-weight: 970;
+            line-height: 1.08;
+            margin-bottom: 1.8rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 40%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -1.8px;
+            animation: slideDown 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-content p {
+            font-size: 1.35rem;
+            color: var(--text-mid);
+            margin-bottom: 2.8rem;
+            line-height: 1.85;
+            font-weight: 420;
+            max-width: 540px;
+            animation: fadeInUp 0.8s ease-out 0.2s both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            animation: fadeInUp 0.8s ease-out 0.4s both;
+        }
+
+        .hero-btn {
+            padding: 1.1rem 2.5rem;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.05rem;
+            font-weight: 750;
+            cursor: pointer;
+            transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+            text-decoration: none;
+            display: inline-block;
+            letter-spacing: 0.4px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            transition: left 0.4s ease;
+            z-index: 0;
+        }
+
+        .hero-btn:hover::before {
+            left: 100%;
+        }
+
+        .hero-btn-primary {
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
+            color: white;
+            box-shadow: 0 12px 32px rgba(231, 76, 60, 0.28);
+        }
+
+        .hero-btn-primary:hover,
+        .hero-btn-primary:focus {
+            transform: translateY(-6px);
+            box-shadow: 0 18px 48px rgba(231, 76, 60, 0.4);
+            outline: none;
+        }
+
+        .hero-image {
+            position: relative;
+            height: 520px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: fadeInUp 0.8s ease-out 0.6s both;
+        }
+
+        .hero-image-box {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(26, 71, 42, 0.1) 0%, rgba(231, 76, 60, 0.1) 100%);
+            border-radius: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid rgba(26, 71, 42, 0.1);
+            box-shadow: 0 28px 72px rgba(0, 0, 0, 0.1);
+            animation: floatSlow 8s ease-in-out infinite;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+
+        .hero-image-box::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(231, 76, 60, 0.12) 0%, transparent 70%);
+            animation: rotateBg 25s linear infinite;
+        }
+
+        .hero-image-box::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.03) 50%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero-image-box svg {
+            width: 240px;
+            height: 240px;
+            position: relative;
+            z-index: 2;
+        }
+
+        @keyframes floatSlow {
+            0%, 100% { transform: translateY(0px) scale(1); }
+            50% { transform: translateY(-28px) scale(1.03); }
+        }
+
+        @keyframes rotateBg {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Features Section */
+        .features {
+            padding: 7.5rem 2.5rem;
+            background: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .features::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent 0%, var(--border) 20%, var(--border) 80%, transparent 100%);
+        }
+
+        .features::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent 0%, var(--border) 20%, var(--border) 80%, transparent 100%);
+        }
+
+        .features-container {
+            max-width: 1320px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .section-header h2 {
+            font-size: 3.5rem;
+            font-weight: 970;
+            color: var(--primary);
+            margin-bottom: 1.4rem;
+            letter-spacing: -1.2px;
+            animation: slideDown 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .section-header p {
+            font-size: 1.25rem;
+            color: var(--text-light);
+            max-width: 760px;
+            margin: 0 auto;
+            font-weight: 420;
+            line-height: 1.8;
+            animation: fadeInUp 0.8s ease-out 0.2s both;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 3.2rem;
+        }
+
+        .feature-card {
+            background: linear-gradient(135deg, var(--bg-lighter) 0%, #f3f4f8 100%);
+            padding: 3.2rem;
+            border-radius: 20px;
+            border: 1.5px solid rgba(26, 71, 42, 0.08);
+            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            animation: slideUp 0.6s ease-out forwards;
+            opacity: 0;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--accent), var(--primary-light));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .feature-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(231, 76, 60, 0) 0%, rgba(231, 76, 60, 0.03) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+
+        .feature-card:nth-child(1) { animation-delay: 0.1s; }
+        .feature-card:nth-child(2) { animation-delay: 0.2s; }
+        .feature-card:nth-child(3) { animation-delay: 0.3s; }
+        .feature-card:nth-child(4) { animation-delay: 0.4s; }
+
+        .feature-card:hover {
+            transform: translateY(-18px);
+            box-shadow: 0 32px 64px rgba(26, 71, 42, 0.14);
+            border-color: var(--accent);
+        }
+
+        .feature-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .feature-card:hover::after {
+            opacity: 1;
+        }
+
+        .feature-icon {
+            width: 90px;
+            height: 90px;
+            margin: 0 auto 1.6rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, rgba(231, 76, 60, 0.12) 0%, rgba(26, 71, 42, 0.06) 100%);
+            border-radius: 18px;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-icon::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.15) 50%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .feature-icon svg {
+            width: 50px;
+            height: 50px;
+            stroke: var(--accent);
+            fill: none;
+            stroke-width: 2.2;
+            transition: transform 0.4s ease;
+            position: relative;
+            z-index: 1;
+        }
+
+        .feature-card:hover .feature-icon {
+            transform: scale(1.15);
+            background: linear-gradient(135deg, rgba(231, 76, 60, 0.18) 0%, rgba(26, 71, 42, 0.1) 100%);
+        }
+
+        .feature-card:hover .feature-icon::before {
+            opacity: 1;
+        }
+
+        .feature-card:hover .feature-icon svg {
+            transform: scale(1.1) rotate(8deg);
+        }
+
+        .feature-card h3 {
+            font-size: 1.45rem;
+            font-weight: 820;
+            color: var(--primary);
+            margin-bottom: 1.1rem;
+            letter-spacing: -0.5px;
+        }
+
+        .feature-card p {
+            color: var(--text-light);
+            font-size: 1.02rem;
+            line-height: 1.8;
+            font-weight: 420;
+        }
+
+        /* Gallery Section */
+        .gallery {
+            padding: 7.5rem 2.5rem;
+            background: linear-gradient(135deg, rgba(26, 71, 42, 0.02) 0%, rgba(231, 76, 60, 0.02) 100%);
+            position: relative;
+        }
+
+        .gallery-container {
+            max-width: 1320px;
+            margin: 0 auto;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+
+        .gallery-item {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 28px rgba(0, 0, 0, 0.08);
+            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+            cursor: pointer;
+            animation: slideUp 0.6s ease-out forwards;
+            opacity: 0;
+            border: 1.5px solid rgba(26, 71, 42, 0.05);
+        }
+
+        .gallery-item:nth-child(1) { animation-delay: 0.1s; }
+        .gallery-item:nth-child(2) { animation-delay: 0.2s; }
+        .gallery-item:nth-child(3) { animation-delay: 0.3s; }
+        .gallery-item:nth-child(4) { animation-delay: 0.4s; }
+
+        .gallery-item:hover {
+            transform: translateY(-16px);
+            box-shadow: 0 28px 56px rgba(0, 0, 0, 0.12);
+            border-color: var(--accent);
+        }
+
+        .gallery-image {
+            width: 100%;
+            height: 280px;
+            background: linear-gradient(135deg, rgba(26, 71, 42, 0.12) 0%, rgba(231, 76, 60, 0.1) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+            transition: all 0.5s ease;
+        }
+
+        .gallery-image svg {
+            width: 120px;
+            height: 120px;
+            stroke: var(--accent);
+            fill: var(--accent);
+            opacity: 0.9;
+            transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+            position: relative;
+            z-index: 2;
+        }
+
+        .gallery-item:hover .gallery-image {
+            transform: scale(1.12);
+        }
+
+        .gallery-item:hover .gallery-image svg {
+            transform: scale(1.15) rotate(-8deg);
+        }
+
+        .gallery-image::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.1) 50%, transparent 70%);
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .gallery-item:hover .gallery-image::before {
+            opacity: 1;
+        }
+
+        .gallery-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, transparent 0%, rgba(26, 71, 42, 0.1) 100%);
+            pointer-events: none;
+        }
+
+        .gallery-content {
+            padding: 2.3rem;
+        }
+
+        .gallery-content h3 {
+            font-size: 1.35rem;
+            font-weight: 820;
+            color: var(--primary);
+            margin-bottom: 0.8rem;
+            letter-spacing: -0.4px;
+        }
+
+        .gallery-content p {
+            color: var(--text-light);
+            font-size: 0.98rem;
+            line-height: 1.75;
+            font-weight: 420;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 7.5rem 2.5rem;
+            background: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .services::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent 0%, var(--border) 20%, var(--border) 80%, transparent 100%);
+        }
+
+        .services-container {
+            max-width: 1320px;
+            margin: 0 auto;
+        }
+
+        .services-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 3.2rem;
+            margin-top: 4rem;
+        }
+
+        .service-item {
+            background: linear-gradient(135deg, var(--bg-lighter) 0%, #f3f4f8 100%);
+            padding: 3.4rem;
+            border-radius: 20px;
+            border-left: 6px solid var(--accent);
+            box-shadow: 0 10px 28px rgba(0, 0, 0, 0.06);
+            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+            position: relative;
+            overflow: hidden;
+            animation: slideUp 0.6s ease-out forwards;
+            opacity: 0;
+        }
+
+        .service-item:nth-child(1) { animation-delay: 0.1s; }
+        .service-item:nth-child(2) { animation-delay: 0.2s; }
+        .service-item:nth-child(3) { animation-delay: 0.3s; }
+
+        .service-item::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            right: -2px;
+            width: 140px;
+            height: 140px;
+            background: radial-gradient(circle, rgba(231, 76, 60, 0.14) 0%, transparent 70%);
+            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .service-item::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(231, 76, 60, 0) 0%, rgba(231, 76, 60, 0.03) 100%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            pointer-events: none;
+        }
+
+        .service-item:hover {
+            box-shadow: 0 20px 48px rgba(0, 0, 0, 0.12);
+            transform: translateX(10px);
+            border-left-color: var(--primary);
+        }
+
+        .service-item:hover::before {
+            width: 200px;
+            height: 200px;
+        }
+
+        .service-item:hover::after {
+            opacity: 1;
+        }
+
+        .service-icon {
+            width: 70px;
+            height: 70px;
+            margin-bottom: 1.4rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, rgba(231, 76, 60, 0.1) 0%, rgba(26, 71, 42, 0.05) 100%);
+            border-radius: 14px;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            position: relative;
+            z-index: 1;
+        }
+
+        .service-icon svg {
+            width: 40px;
+            height: 40px;
+            stroke: var(--accent);
+            fill: none;
+            stroke-width: 2.2;
+            transition: transform 0.4s ease;
+        }
+
+        .service-item:hover .service-icon {
+            background: linear-gradient(135deg, rgba(231, 76, 60, 0.16) 0%, rgba(26, 71, 42, 0.08) 100%);
+            transform: scale(1.1);
+        }
+
+        .service-item:hover .service-icon svg {
+            transform: scale(1.15) rotate(-10deg);
+        }
+
+        .service-item h3 {
+            color: var(--primary);
+            font-size: 1.45rem;
+            font-weight: 820;
+            margin-bottom: 1.2rem;
+            position: relative;
+            z-index: 1;
+            letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .service-item p {
+            color: var(--text-light);
+            font-size: 1.05rem;
+            line-height: 1.85;
+            position: relative;
+            z-index: 1;
+            font-weight: 420;
+        }
+
+        /* Stats Section */
+        .stats {
+            padding: 6.5rem 2.5rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stats::before {
+            content: '';
+            position: absolute;
+            bottom: -80px;
+            right: -80px;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            animation: pulse 8s ease-in-out infinite;
+        }
+
+        .stats::after {
+            content: '';
+            position: absolute;
+            top: -80px;
+            left: -80px;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            animation: pulse 10s ease-in-out infinite;
+        }
+
+        .stats-container {
+            max-width: 1320px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 4rem;
+            text-align: center;
+        }
+
+        .stat-item h3 {
+            font-size: 3.6rem;
+            font-weight: 980;
+            margin-bottom: 0.8rem;
+            letter-spacing: -1.2px;
+            animation: slideDown 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .stat-item p {
+            font-size: 1.25rem;
+            opacity: 0.98;
+            font-weight: 650;
+            letter-spacing: 0.4px;
+            animation: fadeInUp 0.8s ease-out 0.2s both;
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            padding: 7.5rem 2.5rem;
+            background: white;
+            position: relative;
+        }
+
+        .testimonials::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent 0%, var(--border) 20%, var(--border) 80%, transparent 100%);
+        }
+
+        .testimonials-container {
+            max-width: 1320px;
+            margin: 0 auto;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 3.2rem;
+            margin-top: 4rem;
+        }
+
+        .testimonial-card {
+            background: linear-gradient(135deg, var(--bg-lighter) 0%, #f3f4f8 100%);
+            padding: 3.2rem;
+            border-radius: 20px;
+            border: 1.5px solid rgba(26, 71, 42, 0.08);
+            box-shadow: 0 10px 28px rgba(0, 0, 0, 0.06);
+            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+            animation: slideUp 0.6s ease-out forwards;
+            opacity: 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .testimonial-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(231, 76, 60, 0) 0%, rgba(231, 76, 60, 0.04) 100%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            pointer-events: none;
+        }
+
+        .testimonial-card:nth-child(1) { animation-delay: 0.1s; }
+        .testimonial-card:nth-child(2) { animation-delay: 0.2s; }
+        .testimonial-card:nth-child(3) { animation-delay: 0.3s; }
+
+        .testimonial-card:hover {
+            transform: translateY(-14px);
+            box-shadow: 0 24px 56px rgba(0, 0, 0, 0.12);
+            border-color: var(--accent);
+        }
+
+        .testimonial-card:hover::before {
+            opacity: 1;
+        }
+
+        .stars {
+            display: flex;
+            gap: 6px;
+            margin-bottom: 1.8rem;
+            animation: fadeInUp 0.6s ease-out both;
+        }
+
+        .star {
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .star svg {
+            width: 100%;
+            height: 100%;
+            fill: #fbbf24;
+            transition: transform 0.3s ease;
+        }
+
+        .testimonial-card:hover .star svg {
+            transform: scale(1.15);
+        }
+
+        .testimonial-text {
+            color: var(--text-dark);
+            font-size: 1.08rem;
+            line-height: 1.85;
+            margin-bottom: 2rem;
+            font-style: italic;
+            font-weight: 500;
+        }
+
+        .testimonial-author {
+            font-weight: 820;
+            color: var(--primary);
+            font-size: 0.98rem;
+            letter-spacing: -0.3px;
+        }
+
+        .testimonial-role {
+            color: var(--text-light);
+            font-size: 0.87rem;
+            font-weight: 520;
+            margin-top: 0.35rem;
+        }
+
+        /* Footer */
+        .footer {
+            background: linear-gradient(135deg, var(--text-dark) 0%, #0f1419 100%);
+            color: white;
+            padding: 5rem 2.5rem 2.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.1) 20%, rgba(255, 255, 255, 0.1) 80%, transparent 100%);
+        }
+
+        .footer-container {
+            max-width: 1320px;
+            margin: 0 auto;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 4rem;
+            margin-bottom: 4rem;
+        }
+
+        .footer-section h3 {
+            font-size: 1.2rem;
+            font-weight: 820;
+            margin-bottom: 1.6rem;
+            letter-spacing: -0.4px;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-size: 0.98rem;
+            transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+            display: inline-block;
+            margin-bottom: 0.95rem;
+            font-weight: 520;
+            position: relative;
+        }
+
+        .footer-section a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2.5px;
+            background: linear-gradient(90deg, var(--accent), var(--accent-light));
+            transition: width 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            border-radius: 1px;
+        }
+
+        .footer-section a:hover {
+            color: white;
+            transform: translateX(4px);
+        }
+
+        .footer-section a:hover::after {
+            width: 100%;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.12);
+            padding-top: 3rem;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.68);
+            font-size: 0.93rem;
+            font-weight: 520;
+            letter-spacing: 0.2px;
+        }
+
+        /* Animations */
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .navbar-container {
+                flex-wrap: wrap;
+                gap: 1.2rem;
+                padding: 1rem 1.5rem;
+            }
+
+            .logo {
+                font-size: 1.5rem;
+                order: 1;
+            }
+
+            .logo-icon {
+                width: 32px;
+                height: 32px;
+            }
+
+            .nav-links {
+                order: 3;
+                width: 100%;
+                gap: 2rem;
+                flex-wrap: wrap;
+                justify-content: center;
+                flex-basis: 100%;
+                margin-top: 0.75rem;
+            }
+
+            .nav-links a {
+                font-size: 0.9rem;
+                padding: 0.4rem 0;
+            }
+
+            .hero {
+                grid-template-columns: 1fr;
+                padding: 3.5rem 1.5rem 2.5rem;
+                gap: 3rem;
+            }
+
+            .hero::before {
+                width: 300px;
+                height: 300px;
+                left: -50px;
+                top: -50px;
+            }
+
+            .hero-content h1 {
+                font-size: 3rem;
+                margin-bottom: 1.2rem;
+            }
+
+            .hero-content p {
+                font-size: 1.15rem;
+                margin-bottom: 1.8rem;
+            }
+
+            .hero-cta {
+                flex-direction: column;
+            }
+
+            .hero-btn {
+                width: 100%;
+                text-align: center;
+                padding: 1rem 2rem;
+            }
+
+            .hero-image {
+                height: 360px;
+            }
+
+            .hero-image-box {
+                border-radius: 20px;
+            }
+
+            .hero-image-box svg {
+                width: 160px;
+                height: 160px;
+            }
+
+            .features {
+                padding: 4.5rem 1.5rem;
+            }
+
+            .section-header {
+                margin-bottom: 3rem;
+            }
+
+            .section-header h2 {
+                font-size: 2.4rem;
+            }
+
+            .section-header p {
+                font-size: 1.1rem;
+            }
+
+            .features-grid {
+                gap: 2rem;
+            }
+
+            .feature-card {
+                padding: 2.2rem;
+            }
+
+            .gallery {
+                padding: 4.5rem 1.5rem;
+            }
+
+            .gallery-grid {
+                gap: 2rem;
+                margin-top: 2.5rem;
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            }
+
+            .gallery-image {
+                height: 220px;
+            }
+
+            .gallery-image svg {
+                width: 85px;
+                height: 85px;
+            }
+
+            .gallery-content {
+                padding: 1.5rem;
+            }
+
+            .services {
+                padding: 4.5rem 1.5rem;
+            }
+
+            .services-list {
+                gap: 2rem;
+                margin-top: 2.5rem;
+                grid-template-columns: 1fr;
+            }
+
+            .service-item {
+                padding: 2.2rem;
+            }
+
+            .stats {
+                padding: 4rem 1.5rem;
+            }
+
+            .stats-grid {
+                gap: 2.5rem;
+            }
+
+            .stat-item h3 {
+                font-size: 2.4rem;
+            }
+
+            .stat-item p {
+                font-size: 1.05rem;
+            }
+
+            .testimonials {
+                padding: 4.5rem 1.5rem;
+            }
+
+            .testimonials-grid {
+                gap: 2rem;
+                margin-top: 2.5rem;
+                grid-template-columns: 1fr;
+            }
+
+            .testimonial-card {
+                padding: 2.2rem;
+            }
+
+            .footer {
+                padding: 3.5rem 1.5rem 1.5rem;
+            }
+
+            .footer-grid {
+                gap: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="#" class="logo">
+                <span class="logo-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"/>
+                        <path d="M8 12h8M12 8v8"/>
+                        <circle cx="8" cy="9" r="1.5"/>
+                        <circle cx="16" cy="9" r="1.5"/>
+                        <path d="M10 15c1 1 2 1.5 2 1.5s1-0.5 2-1.5"/>
+                    </svg>
+                </span>
+                Prank Ops
+            </a>
+            <ul class="nav-links">
+                <li><a href="#features">Why</a></li>
+                <li><a href="#gallery">Ideas</a></li>
+                <li><a href="#services">Types</a></li>
+                <li><a href="#testimonials">Stories</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>The Art of Harmless Fun</h1>
+            <p>Discover the creative world of pranks, practical jokes, and moments that bring genuine laughter. From clever setups to unforgettable memories, explore the culture of joy.</p>
+            <div class="hero-cta">
+                <a href="#gallery" class="hero-btn hero-btn-primary">Explore Ideas</a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <div class="hero-image-box">
+                <svg viewBox="0 0 200 200" fill="none" stroke="currentColor" stroke-width="2">
+                    <defs>
+                        <filter id="glow">
+                            <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+                            <feMerge>
+                                <feMergeNode in="coloredBlur"/>
+                                <feMergeNode in="SourceGraphic"/>
+                            </feMerge>
+                        </filter>
+                    </defs>
+                    <circle cx="100" cy="100" r="85" stroke="#e74c3c" stroke-width="2" opacity="0.25" filter="url(#glow)"/>
+                    <circle cx="100" cy="100" r="75" stroke="#e74c3c" stroke-width="2" opacity="0.15"/>
+                    <path d="M55 75 Q100 50 145 75" stroke="#e74c3c" stroke-width="3" fill="none" stroke-linecap="round"/>
+                    <circle cx="70" cy="70" r="9" fill="#e74c3c"/>
+                    <circle cx="130" cy="70" r="9" fill="#e74c3c"/>
+                    <path d="M75 130 Q100 105 125 130" stroke="#e74c3c" stroke-width="3" fill="none" stroke-linecap="round"/>
+                    <path d="M85 155 Q100 145 115 155" stroke="#e74c3c" stroke-width="2" fill="none" stroke-linecap="round" opacity="0.6"/>
+                </svg>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="features-container">
+            <div class="section-header">
+                <h2>Why Pranks Matter</h2>
+                <p>Discover the psychological and social benefits of humor, laughter, and playful moments</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                            <circle cx="9" cy="7" r="4"/>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                        </svg>
+                    </div>
+                    <h3>Builds Connection</h3>
+                    <p>Shared laughter strengthens bonds between people and creates lasting memories that deepen relationships.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/>
+                            <circle cx="8.5" cy="9.5" r="1.5" fill="currentColor"/>
+                            <circle cx="15.5" cy="9.5" r="1.5" fill="currentColor"/>
+                            <path d="M12 17c2.33 0 4.31-1.46 5.11-3.5H6.89c.8 2.04 2.78 3.5 5.11 3.5"/>
+                        </svg>
+                    </div>
+                    <h3>Boosts Mood</h3>
+                    <p>Humor releases endorphins and reduces stress. A good prank instantly brightens someone's entire day.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                            <circle cx="9" cy="10" r="1.5" fill="currentColor"/>
+                            <circle cx="12" cy="10" r="1.5" fill="currentColor"/>
+                            <circle cx="15" cy="10" r="1.5" fill="currentColor"/>
+                        </svg>
+                    </div>
+                    <h3>Enhances Creativity</h3>
+                    <p>Planning pranks requires creative thinking, innovation, and problem-solving that engage the mind uniquely.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                        </svg>
+                    </div>
+                    <h3>Shows Care</h3>
+                    <p>Thoughtfully executed pranks demonstrate genuine care and affection through creative acts of joy.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery" id="gallery">
+        <div class="gallery-container">
+            <div class="section-header">
+                <h2>Legendary Prank Ideas</h2>
+                <p>Explore creative and harmless concepts that have made people smile and created unforgettable moments</p>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <div class="gallery-image">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm3.5-9c.83 0 1.5-.67 1.5-1.5S16.33 8 15.5 8 14 8.67 14 9.5s.67 1.5 1.5 1.5zm-7 0c.83 0 1.5-.67 1.5-1.5S9.33 8 8.5 8 7 8.67 7 9.5 7.67 11 8.5 11zm3.5 6.5c2.33 0 4.31-1.46 5.11-3.5H6.89c.8 2.04 2.78 3.5 5.11 3.5z"/>
+                        </svg>
+                    </div>
+                    <div class="gallery-content">
+                        <h3>Surprise Celebrations</h3>
+                        <p>Coordinate with friends to create unexpected moments of pure joy and celebration.</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-image">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>
+                        </svg>
+                    </div>
+                    <div class="gallery-content">
+                        <h3>Creative Decorations</h3>
+                        <p>Transform spaces with hilarious themed setups that surprise and delight everyone.</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-image">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/>
+                        </svg>
+                    </div>
+                    <div class="gallery-content">
+                        <h3>Memorable Moments</h3>
+                        <p>Capture laugh-out-loud experiences that become cherished memories forever.</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-image">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M11.99 5.5C10.34 5.5 9 6.84 9 8.49s1.34 2.99 2.99 2.99S15 10.14 15 8.49 13.64 5.5 11.99 5.5zm6.93 2.2C19.54 7.94 20 7.12 20 6.2V3h-3.2c-.92 0-1.74.46-2.24 1.07C13.69 3.26 12.38 2.5 10.88 2.5c-2.49 0-4.64 1.51-5.78 3.63C4.14 6.35 3.5 7.35 3.5 8.5c0 2.49 2.01 4.5 4.5 4.5.79 0 1.52-.24 2.15-.63.5 1.38 1.81 2.37 3.35 2.37 1.54 0 2.85-.99 3.35-2.37.63.39 1.36.63 2.15.63 2.49 0 4.5-2.01 4.5-4.5 0-1.15-.65-2.15-1.58-2.7z"/>
+                        </svg>
+                    </div>
+                    <div class="gallery-content">
+                        <h3>Creative Adventures</h3>
+                        <p>Engage in playful scenarios that keep everyone entertained and delighted.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="services-container">
+            <div class="section-header">
+                <h2>Types of Pranks</h2>
+                <p>Different approaches to spreading laughter and creating joy in meaningful ways</p>
+            </div>
+            <div class="services-list">
+                <div class="service-item">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="1"/>
+                            <path d="M12 1v6m8-2l-4.35 4.35M23 12h-6m2 8l-4.35-4.35M12 23v-6m-8-2l4.35-4.35M1 12h6m-2-8l4.35 4.35"/>
+                        </svg>
+                    </div>
+                    <h3>Birthday Surprises</h3>
+                    <p>Transform special days with elaborate surprise elements. Coordinate with friends to create unexpected celebrations filled with authentic laughter that make birthdays truly unforgettable.</p>
+                </div>
+                <div class="service-item">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                            <circle cx="9" cy="7" r="4"/>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                        </svg>
+                    </div>
+                    <h3>Workplace Harmony</h3>
+                    <p>Professional-grade harmless pranks boost team morale. Create bonding moments that strengthen workplace relationships and foster genuine connections among colleagues.</p>
+                </div>
+                <div class="service-item">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
+                            <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+                        </svg>
+                    </div>
+                    <h3>Special Moments</h3>
+                    <p>Custom prank experiences for anniversaries, promotions, and milestones. Design personalized joy that matches the occasion and creates stories told for years.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="stats-container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <h3>10K+</h3>
+                    <p>Happy Pranked People</p>
+                </div>
+                <div class="stat-item">
+                    <h3>5K+</h3>
+                    <p>Creative Ideas</p>
+                </div>
+                <div class="stat-item">
+                    <h3>99%</h3>
+                    <p>Joy & Laughter</p>
+                </div>
+                <div class="stat-item">
+                    <h3>∞</h3>
+                    <p>Fun & Memories</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials" id="testimonials">
+        <div class="testimonials-container">
+            <div class="section-header">
+                <h2>Stories from Community</h2>
+                <p>Real experiences from people who've felt the joy of genuine laughter and creative pranks</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <div class="star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+                        <div class="star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+                        <div class="star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+                        <div class="star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+                        <div class="star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+                    </div>
+                    <p class="testimonial-text">"The surprise they organized completely made my day. I couldn't stop laughing! It was the most thoughtful and creative prank I've ever experienced."</p>
+                    <div class="testimonial-author">Sarah Johnson</div>
+                    <div class="testimonial-role">Birthday Celebrant</div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <div class="star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+                        <div class="star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+                        <div class="star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+                        <div class="star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+                        <div class="star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+                    </div>
+                    <p class="testimonial-text">"Best team activity ever! Everyone was laughing and having genuine fun. It brought our whole office closer and created amazing memories."</p>
+                    <div class="testimonial-author">Mike Chen</div>
+                    <div class="testimonial-role">Office Manager</div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <div class="star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+                        <div class="star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+                        <div class="star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+                        <div class="star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+                        <div class="star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+                    </div>
+                    <p class="testimonial-text">"The creativity and attention to detail was incredible. My friends still talk about it months later. It was so much fun and incredibly well done!"</p>
+                    <div class="testimonial-author">Emma Rodriguez</div>
+                    <div class="testimonial-role">Event Organizer</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h3>About</h3>
+                    <ul>
+                        <li><a href="#">Our Story</a></li>
+                        <li><a href="#">Philosophy</a></li>
+                        <li><a href="#">Team</a></li>
+                        <li><a href="#">Press</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Explore</h3>
+                    <ul>
+                        <li><a href="#">Prank Ideas</a></li>
+                        <li><a href="#">Inspiration</a></li>
+                        <li><a href="#">Community</a></li>
+                        <li><a href="#">Resources</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">Feedback</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="#">Privacy</a></li>
+                        <li><a href="#">Terms</a></li>
+                        <li><a href="#">Accessibility</a></li>
+                        <li><a href="#">Sitemap</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Prank Operations. Bringing joy through the art of harmless fun. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
