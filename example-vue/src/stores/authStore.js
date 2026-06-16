@@ -1,8 +1,8 @@
 import { defineStore } from 'pinia';
 import axios from 'axios';
 
-// Базовый адрес REST API (Laravel + Sanctum)
-const API_BASE = 'http://127.0.0.1:8000/api';
+// Базовый адрес REST API (Laravel + Sanctum) — берётся из .env (VITE_BACKEND_URL)
+const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
 export const useAuthStore = defineStore('auth', {
   state: () => ({
@@ -15,7 +15,7 @@ export const useAuthStore = defineStore('auth', {
     async login(credentials) {
       this.errorMessage = "";
       try {
-        const response = await axios.post(API_BASE + '/login', credentials);
+        const response = await axios.post(backendUrl + '/login', credentials);
         this.token = response.data.token;
         this.user = response.data.user;
         this.isAuthenticated = true;
@@ -38,7 +38,7 @@ export const useAuthStore = defineStore('auth', {
     async getUser() {
       this.errorMessage = "";
       try {
-        const response = await axios.get(API_BASE + '/me', {
+        const response = await axios.get(backendUrl + '/me', {
           headers: {
             Authorization: 'Bearer ' + this.token,
           },
@@ -59,7 +59,7 @@ export const useAuthStore = defineStore('auth', {
     },
     async logout() {
       try {
-        await axios.post(API_BASE + '/logout', {}, {
+        await axios.post(backendUrl + '/logout', {}, {
           headers: {
             Authorization: 'Bearer ' + this.token,
           },

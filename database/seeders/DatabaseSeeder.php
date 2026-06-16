@@ -21,5 +21,8 @@ class DatabaseSeeder extends Seeder
             'name' => 'Test User',
             'email' => 'test@example.com',
         ]);
+
+        // Демонстрационные данные для постраничного вывода (teams, players)
+        $this->call(PaginationDemoSeeder::class);
     }
 }

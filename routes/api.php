@@ -20,10 +20,12 @@ Route::middleware('auth:sanctum')->group(function () {
 
     // Маршруты для таблицы teams
     Route::get('/team', [TeamControllerApi::class, 'index']);
+    Route::get('/team_total', [TeamControllerApi::class, 'total']);
     Route::get('/team/{id}', [TeamControllerApi::class, 'show']);
 
     // Маршруты для таблицы players
     Route::get('/player', [PlayerControllerApi::class, 'index']);
+    Route::get('/player_total', [PlayerControllerApi::class, 'total']);
     Route::get('/player/{id}', [PlayerControllerApi::class, 'show']);
 
     // Маршруты для таблицы matches

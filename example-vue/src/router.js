@@ -1,19 +1,19 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import Home from '@/components/Home.vue';
-import Items from '@/components/Items.vue';
-import Categories from "@/components/Categories.vue";
+import Teams from '@/components/Teams.vue';
+import Players from '@/components/Players.vue';
 const routes = [
   {
     path: '/',
     component: Home,
   },
   {
-    path: '/categories',
-    component: Categories,
+    path: '/teams',
+    component: Teams,
   },
   {
-    path: '/items',
-    component: Items,
+    path: '/players',
+    component: Players,
   },
 ];
 const router = createRouter({

@@ -88,8 +88,8 @@ export default {
       authStore: useAuthStore(),
       items: [
         { label: 'Главная', icon: 'pi pi-home', route: '/' },
-        { label: 'Категории', icon: 'pi pi-tags', route: '/categories' },
-        { label: 'Товары', icon: 'pi pi-box', route: '/items' },
+        { label: 'Команды', icon: 'pi pi-tags', route: '/teams' },
+        { label: 'Игроки', icon: 'pi pi-box', route: '/players' },
       ],
     }
   },
