@@ -1,43 +1,96 @@
 <template>
   <header>
-    <nav>
-      <ul>
-        <li><router-link to="/">Главная</router-link></li>
-        <li><router-link to="/categories">Категории</router-link></li>
-        <li><router-link to="/items">Товары</router-link></li>
-      </ul>
-      <div v-if="isAuthenticated && user">
-        Welcome, {{ user.name }}
-        <button @click="logout">Logout</button>
-      </div>
-      <div v-else>
-        <form @submit.prevent="login">
-          <div>
-            <label for="email">Email:</label>
-            <input v-model="email" type="email" id="email" required />
+    <Menubar :model="items" class="app-menubar">
+      <!-- Логотип / название слева -->
+      <template #start>
+        <span class="brand">
+          <i class="pi pi-prime" style="font-size: 1.3rem"></i>
+          PrimeVue App
+        </span>
+      </template>
+
+      <!-- Пункты меню, привязанные к маршрутам -->
+      <template #item="{ item, props }">
+        <router-link
+          v-if="item.route"
+          :to="item.route"
+          custom
+          v-slot="{ href, navigate, isActive }"
+        >
+          <a
+            :href="href"
+            v-bind="props.action"
+            :class="{ 'active-link': isActive }"
+            @click="navigate"
+          >
+            <span :class="item.icon" />
+            <span class="ml-2">{{ item.label }}</span>
+          </a>
+        </router-link>
+      </template>
+
+      <!-- Форма аутентификации справа -->
+      <template #end>
+        <div class="auth-area">
+          <div v-if="isAuthenticated && user" class="auth-user">
+            <span>Привет, <strong>{{ user.name }}</strong></span>
+            <Button
+              label="Выйти"
+              icon="pi pi-sign-out"
+              severity="secondary"
+              size="small"
+              @click="logout"
+            />
           </div>
-          <div>
-            <label for="password">Password:</label>
-            <input v-model="password" type="password" id="password" required />
-          </div>
-          <button type="submit">Login</button>
-          <p v-if="authError" class="error">{{ authError }}</p>
-        </form>
-      </div>
-    </nav>
+
+          <form v-else class="auth-form" @submit.prevent="login">
+            <InputText
+              v-model="email"
+              type="email"
+              placeholder="Email"
+              size="small"
+              required
+            />
+            <Password
+              v-model="password"
+              placeholder="Пароль"
+              :feedback="false"
+              toggleMask
+              inputClass="auth-password-input"
+              required
+            />
+            <Button type="submit" label="Войти" icon="pi pi-sign-in" size="small" />
+            <small v-if="authError" class="auth-error">{{ authError }}</small>
+          </form>
+        </div>
+      </template>
+    </Menubar>
   </header>
-  <router-view></router-view>
+
+  <main class="app-content">
+    <router-view></router-view>
+  </main>
 </template>
 
 <script>
 import { useAuthStore } from '@/stores/authStore'
+import Menubar from 'primevue/menubar'
+import InputText from 'primevue/inputtext'
+import Password from 'primevue/password'
+import Button from 'primevue/button'
 
 export default {
+  components: { Menubar, InputText, Password, Button },
   data() {
     return {
       email: '',
       password: '',
       authStore: useAuthStore(),
+      items: [
+        { label: 'Главная', icon: 'pi pi-home', route: '/' },
+        { label: 'Категории', icon: 'pi pi-tags', route: '/categories' },
+        { label: 'Товары', icon: 'pi pi-box', route: '/items' },
+      ],
     }
   },
   computed: {
@@ -53,7 +106,7 @@ export default {
   },
   methods: {
     logout() {
-      this.authStore.logout() // Используем authStore для логаута
+      this.authStore.logout()
     },
     login() {
       this.authStore.login({ email: this.email, password: this.password })
@@ -70,28 +123,41 @@ export default {
 </script>
 
 <style scoped>
-header {
-  border-bottom: 1px solid #e0e0e0;
-  margin-bottom: 1.5rem;
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 700;
+  color: var(--p-primary-color, #10b981);
+  margin-right: 1rem;
 }
-nav ul {
-  list-style: none;
+.ml-2 {
+  margin-left: 0.5rem;
+}
+.active-link {
+  color: var(--p-primary-color, #10b981) !important;
+  font-weight: 700;
+}
+.auth-area {
   display: flex;
-  gap: 1.5rem;
-  padding: 0;
-  margin: 0 0 1rem;
+  align-items: center;
 }
-nav a {
-  text-decoration: none;
-  color: #2c3e50;
-  font-weight: 600;
-  padding: 0.4rem 0.2rem;
+.auth-user {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
 }
-nav a.router-link-active {
-  color: #42b883;
-  border-bottom: 2px solid #42b883;
+.auth-form {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
 }
-.error {
-  color: red;
+.auth-error {
+  color: #ef4444;
+  width: 100%;
+}
+.app-content {
+  padding: 1.5rem;
 }
 </style>
