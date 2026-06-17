@@ -17,6 +17,7 @@ export const useDataStore = defineStore('data', {
     players_total: null,
     loading: false,
     errorMessage: '',
+    errorCode: 0,
   }),
   actions: {
     // --- Добавление команды с загрузкой изображения ---
@@ -52,13 +53,90 @@ export const useDataStore = defineStore('data', {
       }
     },
 
+    // --- Получение одной команды по id (для формы редактирования) ---
+    async get_team(id) {
+      this.errorMessage = '';
+      try {
+        const response = await axios.get(backendUrl + '/team/' + id, {
+          headers: authHeader(),
+        });
+        return response.data;
+      } catch (error) {
+        this.errorMessage = error.message;
+        console.log(error);
+        return null;
+      }
+    },
+
+    // --- Удаление команды ---
+    // Бэкенд возвращает { code, message|error }. code=0 — успех, иначе ошибка.
+    async delete_team(id) {
+      this.errorMessage = '';
+      this.errorCode = 0;
+      try {
+        const response = await axios.delete(backendUrl + '/team/' + id, {
+          headers: authHeader(),
+        });
+        this.errorCode = response.data.code;
+        // На успех приходит message, на бизнес-ошибку — error
+        this.errorMessage = response.data.message ?? response.data.error;
+      } catch (error) {
+        if (error.response) {
+          // 401 — нет прав на удаление, 4xx/5xx — прочие ошибки
+          this.errorCode = error.response.data.code ?? 11;
+          this.errorMessage = error.response.data.message;
+          console.log(error);
+        } else if (error.request) {
+          this.errorCode = 12;
+          this.errorMessage = error.message;
+          console.log(error);
+        } else {
+          this.errorCode = 13;
+          console.log(error);
+        }
+      }
+    },
+
+    // --- Обновление (редактирование) команды ---
+    // Возвращает { ok, message, errors } для показа toast в компоненте.
+    async update_team(formData, id) {
+      this.errorMessage = '';
+      this.loading = true;
+      try {
+        const response = await axios.post(backendUrl + '/team/' + id, formData, {
+          headers: {
+            ...authHeader(),
+            'Content-Type': 'multipart/form-data',
+          },
+        });
+        return { ok: response.data.code === 0, message: response.data.message, errors: {} };
+      } catch (error) {
+        if (error.response) {
+          // 422 — ошибки валидации, 401 — нет прав, 500 — ошибка сервера
+          this.errorMessage = error.response.data.message;
+          return {
+            ok: false,
+            message: error.response.data.message,
+            errors: error.response.data.errors || {},
+          };
+        } else if (error.request) {
+          this.errorMessage = error.message;
+          return { ok: false, message: 'Сервер недоступен: ' + error.message, errors: {} };
+        }
+        return { ok: false, message: 'Неизвестная ошибка', errors: {} };
+      } finally {
+        this.loading = false;
+      }
+    },
+
     // --- Команды (таблица teams) ---
-    async get_teams(page = 0, perpage = 5) {
+    // search — подстрока для фильтрации записей по наименованию.
+    async get_teams(page = 0, perpage = 5, search = '') {
       this.errorMessage = '';
       this.loading = true;
       try {
         const response = await axios.get(backendUrl + '/team', {
-          params: { page, perpage },
+          params: { page, perpage, search },
           headers: authHeader(),
         });
         this.teams = response.data;
@@ -76,10 +154,11 @@ export const useDataStore = defineStore('data', {
         this.loading = false;
       }
     },
-    async get_teams_total() {
+    async get_teams_total(search = '') {
       this.errorMessage = '';
       try {
         const response = await axios.get(backendUrl + '/team_total', {
+          params: { search },
           headers: authHeader(),
         });
         this.teams_total = response.data;

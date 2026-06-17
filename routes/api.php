@@ -23,6 +23,8 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/team_total', [TeamControllerApi::class, 'total']);
     Route::post('/team', [TeamControllerApi::class, 'store']);
     Route::get('/team/{id}', [TeamControllerApi::class, 'show']);
+    Route::delete('/team/{id}', [TeamControllerApi::class, 'destroy']);
+    Route::post('/team/{id}', [TeamControllerApi::class, 'update']);
 
     // Маршруты для таблицы players
     Route::get('/player', [PlayerControllerApi::class, 'index']);
