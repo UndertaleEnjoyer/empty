@@ -19,6 +19,39 @@ export const useDataStore = defineStore('data', {
     errorMessage: '',
   }),
   actions: {
+    // --- Добавление команды с загрузкой изображения ---
+    // Возвращает объект { ok, message, errors } для показа toast в компоненте.
+    async add_team(formData) {
+      this.errorMessage = '';
+      this.loading = true;
+      try {
+        const response = await axios.post(backendUrl + '/team', formData, {
+          headers: {
+            ...authHeader(),
+            'Content-Type': 'multipart/form-data',
+          },
+        });
+        return { ok: true, message: response.data.message, errors: {} };
+      } catch (error) {
+        if (error.response) {
+          // 422 — ошибки валидации, 503 — S3 недоступен и т.д.
+          this.errorMessage = error.response.data.message;
+          return {
+            ok: false,
+            message: error.response.data.message,
+            errors: error.response.data.errors || {},
+          };
+        } else if (error.request) {
+          // Запрос ушёл, но ответа нет (backend недоступен)
+          this.errorMessage = error.message;
+          return { ok: false, message: 'Сервер недоступен: ' + error.message, errors: {} };
+        }
+        return { ok: false, message: 'Неизвестная ошибка', errors: {} };
+      } finally {
+        this.loading = false;
+      }
+    },
+
     // --- Команды (таблица teams) ---
     async get_teams(page = 0, perpage = 5) {
       this.errorMessage = '';

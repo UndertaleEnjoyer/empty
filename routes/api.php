@@ -21,6 +21,7 @@ Route::middleware('auth:sanctum')->group(function () {
     // Маршруты для таблицы teams
     Route::get('/team', [TeamControllerApi::class, 'index']);
     Route::get('/team_total', [TeamControllerApi::class, 'total']);
+    Route::post('/team', [TeamControllerApi::class, 'store']);
     Route::get('/team/{id}', [TeamControllerApi::class, 'show']);
 
     // Маршруты для таблицы players

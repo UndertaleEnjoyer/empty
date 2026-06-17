@@ -70,6 +70,9 @@
   <main class="app-content">
     <router-view></router-view>
   </main>
+
+  <!-- Контейнер всплывающих уведомлений (toast) -->
+  <Toast />
 </template>
 
 <script>
@@ -78,9 +81,10 @@ import Menubar from 'primevue/menubar'
 import InputText from 'primevue/inputtext'
 import Password from 'primevue/password'
 import Button from 'primevue/button'
+import Toast from 'primevue/toast'
 
 export default {
-  components: { Menubar, InputText, Password, Button },
+  components: { Menubar, InputText, Password, Button, Toast },
   data() {
     return {
       email: '',

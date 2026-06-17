@@ -49,14 +49,15 @@ return [
 
         's3' => [
             'driver' => 's3',
-            'key' => env('AWS_ACCESS_KEY_ID'),
-            'secret' => env('AWS_SECRET_ACCESS_KEY'),
-            'region' => env('AWS_DEFAULT_REGION'),
-            'bucket' => env('AWS_BUCKET'),
-            'url' => env('AWS_URL'),
-            'endpoint' => env('AWS_ENDPOINT'),
-            'use_path_style_endpoint' => env('AWS_USE_PATH_STYLE_ENDPOINT', false),
-            'throw' => false,
+            'key' => env('S3_KEY'),
+            'secret' => env('S3_SECRET'),
+            'region' => env('S3_REGION', 'ru-central1'),
+            'version' => env('S3_VERSION', 'latest'),
+            'bucket' => env('S3_BUCKET'),
+            'endpoint' => env('S3_ENDPOINT', 'https://storage.yandexcloud.net'),
+            // Yandex Object Storage использует virtual-hosted style (path style не нужен)
+            'use_path_style_endpoint' => env('S3_USE_PATH_STYLE_ENDPOINT', false),
+            'throw' => true,
             'report' => false,
         ],
 
